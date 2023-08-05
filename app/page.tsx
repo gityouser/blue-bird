@@ -1,7 +1,7 @@
 import { Inter } from "@next/font/google";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import AuthButton from "./auth-button";
+import AuthButtonServer from "./auth/callback/auth-button-server";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <>
-      <AuthButton />
+      <AuthButtonServer />
       <pre>{JSON.stringify(tweets, null, 2)}</pre>
     </>
   );
