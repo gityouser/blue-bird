@@ -6,7 +6,7 @@ export default function NewTweet() {
 
   return (
     <form action={addTweet}>
-      <input name="title" />
+      <input className="bh-inherit" name="title" />
     </form>
   );
 }
