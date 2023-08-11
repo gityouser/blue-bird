@@ -1,4 +1,3 @@
-import { Inter } from "@next/font/google";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import AuthButtonServer from "./auth/callback/auth-button-server";
@@ -17,9 +16,15 @@ export default async function Home() {
     redirect("login");
   }
 
-  const { data: tweets } = await supabase
+  const { data } = await supabase
     .from("tweets")
     .select("*, profiles(*), likes(*)");
+  const tweets =
+    data?.map((tweet) => ({
+      ...tweet,
+      likes: tweet.likes.length,
+      isLiked: tweet.likes.find((like) => like.user_id === session.user.id),
+    })) || [];
 
   return (
     <>
