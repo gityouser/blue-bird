@@ -9,13 +9,14 @@ export default function NewTweet() {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-
-    if (user) await supabase.from("tweets").insert({ title, user_id: user.id });
+    if (user) {
+      await supabase.from("tweets").insert({ title, user_id: user.id });
+    }
   };
 
   return (
     <form action={addTweet}>
-      <input className="bh-inherit" name="title" />
+      <input name="title" className="bg-inherit" />
     </form>
   );
 }

@@ -11,18 +11,19 @@ export default async function Home() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
-  const { data: tweets } = await supabase
-    .from("tweets")
-    .select("*, profiles(*)");
 
   if (!session) {
     redirect("login");
   }
 
+  const { data: tweets } = await supabase
+    .from("tweets")
+    .select("*, profiles(*)");
+
   return (
     <>
-      <NewTweet />
       <AuthButtonServer />
+      <NewTweet />
       <pre>{JSON.stringify(tweets, null, 2)}</pre>
     </>
   );
