@@ -3,8 +3,10 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Likes from "./likes";
 import { useEffect, experimental_useOptimistic as useOptimistic } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Tweets({ tweets }: { tweets: TweetWithAuthor[] }) {
+  const router = useRouter();
   const [optimisticTweets, addOptimisticTweet] = useOptimistic<
     TweetWithAuthor[],
     TweetWithAuthor
@@ -31,15 +33,16 @@ export default function Tweets({ tweets }: { tweets: TweetWithAuthor[] }) {
           schema: "public",
           table: "tweets",
         },
-        (payload) => {
-          console.log(payload);
+        (_payload) => {
+          // refresh page when new tweet is created
+          router.refresh();
         }
       )
       .subscribe();
 
     // unsubscribe channel when component unmounts
     return () => supabase.removeChannel(channel);
-  }, []);
+  }, [router, supabase]);
 
   return optimisticTweets.map((tweet) => (
     <div key={tweet.id}>
