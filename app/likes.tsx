@@ -29,6 +29,11 @@ export default function Likes({
           tweet_id: tweet.id,
         });
       } else {
+        addOptimisticTweet({
+          ...tweet,
+          likes: tweet.likes + 1,
+          isLiked: !tweet.isLiked,
+        });
         await supabase
           .from("likes")
           .insert({ user_id: user.id, tweet_id: tweet.id });
