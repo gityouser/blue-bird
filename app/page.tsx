@@ -28,8 +28,11 @@ export default async function Home() {
     })) || [];
 
   return (
-    <div className="bg-blue-200 w-full max-w-xl mx-auto">
-      <AuthButtonServer />
+    <div className="w-full max-w-xl mx-auto">
+      <div className="flex justify-between px-4 py-6 border border-gray-800 border-t-0">
+        <h1 className="text-lx font-bold">Home</h1>
+        <AuthButtonServer />
+      </div>
       <NewTweet />
       <Tweets tweets={tweets} />
     </div>
