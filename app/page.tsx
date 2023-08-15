@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import AuthButtonServer from "./auth/callback/auth-button-server";
 import { redirect } from "next/navigation";
 import NewTweet from "./new-tweet";
-import Likes from "./likes";
 import Tweets from "./tweets";
 
 export default async function Home() {
@@ -29,10 +28,10 @@ export default async function Home() {
     })) || [];
 
   return (
-    <>
+    <div className="bg-blue-200 w-full max-w-xl mx-auto">
       <AuthButtonServer />
       <NewTweet />
       <Tweets tweets={tweets} />
-    </>
+    </div>
   );
 }
