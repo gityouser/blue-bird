@@ -33,7 +33,7 @@ export default async function Home() {
         <h1 className="text-lx font-bold">Home</h1>
         <AuthButtonServer />
       </div>
-      <NewTweet />
+      <NewTweet user={session.user} />
       <Tweets tweets={tweets} />
     </div>
   );

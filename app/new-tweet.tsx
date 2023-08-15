@@ -1,22 +1,28 @@
-import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
+import { User, createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import Image from "next/image";
 
-export default function NewTweet() {
+export default function NewTweet({ user }: { user: User }) {
   const addTweet = async (formData: FormData) => {
     "use server";
     const title = String(formData.get("title"));
     const supabase = createServerActionClient<Database>({ cookies });
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (user) {
-      await supabase.from("tweets").insert({ title, user_id: user.id });
-    }
+
+    await supabase.from("tweets").insert({ title, user_id: user.id });
   };
 
   return (
-    <form action={addTweet}>
-      <input name="title" className="bg-inherit" />
+    <form className="border border-gray-800 border-t-0" action={addTweet}>
+      <div className="flex py-8 px-4">
+        <Image
+          src={user.user_metadata.avatar_url}
+          width={48}
+          height={48}
+          className="bg-red-200 h-12 w-12 rounded-full"
+          alt="user avatar"
+        />
+        <input name="title" className="bg-blue-200 flex-1" />
+      </div>
     </form>
   );
 }
