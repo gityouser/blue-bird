@@ -21,7 +21,11 @@ export default function NewTweet({ user }: { user: User }) {
           className="bg-red-200 h-12 w-12 rounded-full"
           alt="user avatar"
         />
-        <input name="title" className="bg-blue-200 flex-1" />
+        <input
+          name="title"
+          className="bg-inherit flex-1 ml-2 text-2xl leading-loose placeholder-gray-500 px-2"
+          placeholder="What is happening?!"
+        />
       </div>
     </form>
   );
