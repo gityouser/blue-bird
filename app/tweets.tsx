@@ -23,6 +23,7 @@ export default function Tweets({ tweets }: { tweets: TweetWithAuthor[] }) {
 
   const supabase = createClientComponentClient<Database>();
 
+  // @ts-ignore
   useEffect(() => {
     // subscribe to realtime changes
     const channel = supabase

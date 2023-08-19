@@ -5,6 +5,14 @@ import { redirect } from "next/navigation";
 import NewTweet from "./new-tweet";
 import Tweets from "./tweets";
 
+/*
+  'force-dynamic': Force dynamic rendering and uncached data fetching of a layout or page by disabling all caching of fetch requests and always revalidating. This option is equivalent to:
+    getServerSideProps() in the pages directory.
+    Setting the option of every fetch() request in a layout or page to { cache: 'no-store', next: { revalidate: 0 } }.
+    Setting the segment config to export const fetchCache = 'force-no-store'
+ */
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const supabase = createServerComponentClient<Database>({ cookies });
 
