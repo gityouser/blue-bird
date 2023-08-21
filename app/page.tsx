@@ -13,6 +13,25 @@ import Tweets from "./tweets";
  */
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title:
+    "Chatty, a Twitter clone built with Next.js, Supabase, and Tailwind CSS",
+  openGraph: {
+    title:
+      "Chatty, a Twitter clone built with Next.js, Supabase, and Tailwind CSS",
+    description:
+      "Chatty is a Twitter clone built with Next.js, Supabase, and Tailwind CSS.",
+    images: [
+      {
+        url: "/images/twitter-cat-logo",
+        width: 400,
+        height: 400,
+        alt: "Twitter cat logo",
+      },
+    ],
+  },
+};
+
 export default async function Home() {
   const supabase = createServerComponentClient<Database>({ cookies });
 
