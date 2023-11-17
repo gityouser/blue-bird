@@ -2,7 +2,7 @@
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Likes from "./likes";
-import { useEffect, experimental_useOptimistic as useOptimistic } from "react";
+import { useEffect, useOptimistic } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 

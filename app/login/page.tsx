@@ -2,6 +2,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import GithubButton from "./github-button";
+import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,12 @@ export default async function Login() {
 
   return (
     <div className="flex-1 flex justify-center items-center">
+      <Image
+        src="/images/twitter-cat-logo.png"
+        alt="logo"
+        width={48}
+        height={48}
+      />
       <GithubButton />
     </div>
   );
