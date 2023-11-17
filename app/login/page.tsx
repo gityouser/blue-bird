@@ -18,14 +18,16 @@ export default async function Login() {
   }
 
   return (
-    <div className="flex-1 flex justify-center items-center">
+    <div className="flex-1 flex justify-center items-center flex-col">
       <Image
         src="/images/twitter-cat-logo.png"
         alt="logo"
         width={48}
         height={48}
+        className="-mb-12 -ml-16 -rotate-12 pointer-events-none"
       />
       <GithubButton />
+      <p className="text-sm text-gray-400 font-medium">Login to post a tweet</p>
     </div>
   );
 }

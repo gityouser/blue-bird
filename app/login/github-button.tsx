@@ -16,7 +16,10 @@ export default function GithubButton() {
   };
 
   return (
-    <button onClick={handleSignIn} className="hover:bg-gray-800 p-8 rounded-xl">
+    <button
+      onClick={handleSignIn}
+      className="hover:bg-gray-800 p-8 rounded-xl cursor-pointer"
+    >
       <Image
         src="/github-mark-white.png"
         width={100}
